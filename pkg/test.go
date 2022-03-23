@@ -8,13 +8,17 @@ import (
 
 func main() {
 	fmt.Println("=========start run=========")
+	m := map[int64]string{
+		1:"a",
+		2:"b",
+	}
+	fmt.Println(len(m))
 
-
-	a := 1
+	//a := 1
 	//fmt.Printf("%p\n", a)
 	//fmt.Printf("%p\n", &a)
 	//fmt.Printf("%p\n", *a)
-	fmt.Println("asdf","ffff",a)
+	//fmt.Println("asdf","ffff",a)
 
 	//testSliceSwap()
 	//testIntSwap()

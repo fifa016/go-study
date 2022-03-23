@@ -32,9 +32,24 @@ type Admin2 struct {
 
 func main() {
 	fmt.Println("=========start run=========")
-	testAnonymousStruct()
+	//testAnonymousStruct()
+	ul := UserList{
+		User{name: "u1"},
+		User{name: "u2"},
+	}
+	fmt.Println("before swap u name : ", ul[0].name)
+	ul.listSwap(0,1)
+	fmt.Println("after swap u name : ", ul[0].name)
 }
 
+type UserList []User
+
+func (u UserList) listSwap(i, j int) {
+	u[i], u[j] = u[j], u[i]
+}
+func testSwapStruct(a User, b User) {
+	a, b = b, a
+}
 func testSetName() {
 	u := User{
 		name: "name1",
@@ -51,15 +66,15 @@ func testSetName() {
 }
 
 func testAnonymousStruct() {
-    admin := Admin2{
-        User: User{
-            name: "admin2",
-            sex:  "sex",
-            age:  1,
-        },
-        privl: 2,
-    }
-    admin.setNameP("asdf")
+	admin := Admin2{
+		User: User{
+			name: "admin2",
+			sex:  "sex",
+			age:  1,
+		},
+		privl: 2,
+	}
+	admin.setNameP("asdf")
 	admin.setName("asdf")
 	fmt.Printf("admin: %+v\n", admin)
 
