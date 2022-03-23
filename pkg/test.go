@@ -1,18 +1,66 @@
 package main
 
-import "fmt"
-import "go-study/pkg/util"
-import "strconv"
+import (
+	"fmt"
+	"go-study/pkg/util"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("=========start run=========")
+
+
+	a := 1
+	//fmt.Printf("%p\n", a)
+	//fmt.Printf("%p\n", &a)
+	//fmt.Printf("%p\n", *a)
+	fmt.Println("asdf","ffff",a)
 
 	//testSliceSwap()
 	//testIntSwap()
 	//testNilString()
 	//testIntArray()
 	//testStringJoin()
-	testForeachDelete()
+	//testMap()
+}
+
+func testMap() {
+	map1 := make(map[int64]string)
+
+	map2 := map[int]string{
+		1: "a",
+		2: "b",
+		3: "c",
+	}
+	map3 := map[int]string{}
+	fmt.Println(len(map1))
+	fmt.Println(len(map2))
+	fmt.Println(len(map3))
+	fmt.Printf("map2:%v\n", map2)
+	map1[1] = "a"
+	map2[2] = "bb"
+	map2[4] = "d"
+	map3[1] = "a"
+
+	//compile error
+	//var map4 map[int]string
+	//map4[1] = "a"
+
+	val, exists := map1[2]
+	if !exists {
+		fmt.Println("key not exists")
+	} else {
+		fmt.Println("val: " + val)
+	}
+
+	map1[1] = ""
+	val, exists = map1[1]
+	fmt.Printf("exitst: %t\n", exists)
+	delete(map2, 2)
+	for k, v := range map2 {
+		fmt.Println("key:" + strconv.Itoa(k) + " val: " + v)
+	}
+
 }
 
 func testForeachDelete() {
