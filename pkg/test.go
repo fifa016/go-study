@@ -13,7 +13,7 @@ func main() {
 		2:"b",
 	}
 	fmt.Println(len(m))
-
+test(1)
 	//a := 1
 	//fmt.Printf("%p\n", a)
 	//fmt.Printf("%p\n", &a)
@@ -26,6 +26,9 @@ func main() {
 	//testIntArray()
 	//testStringJoin()
 	//testMap()
+}
+func test(a int, b ...int){
+
 }
 
 func testMap() {
