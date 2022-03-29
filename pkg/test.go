@@ -4,33 +4,46 @@ import (
 	"fmt"
 	"go-study/pkg/util"
 	"strconv"
+	"sync"
 )
 
 func main() {
 	fmt.Println("=========start run=========")
-	m := map[int64]string{
-		1:"a",
-		2:"b",
-	}
-	fmt.Println(len(m))
-test(1)
-	//a := 1
-	//fmt.Printf("%p\n", a)
-	//fmt.Printf("%p\n", &a)
-	//fmt.Printf("%p\n", *a)
-	//fmt.Println("asdf","ffff",a)
-
-	//testSliceSwap()
-	//testIntSwap()
-	//testNilString()
-	//testIntArray()
-	//testStringJoin()
-	//testMap()
-}
-func test(a int, b ...int){
-
+	testPanic()
 }
 
+func testPanic() {
+	waitGroup := sync.WaitGroup{}
+	waitGroup.Add(1)
+	go func() {
+		defer func() {
+			fmt.Println("before crash")
+			if recover := recover(); recover != nil {
+				fmt.Println("recovered: ", recover)
+			}
+			waitGroup.Done()
+		}()
+		panic(1)
+		fmt.Println("after panic")
+
+		fmt.Println("after recover")
+	}()
+	waitGroup.Wait()
+	fmt.Println("ready to close")
+
+}
+func TestSliceAppend() {
+	fmt.Println("...............")
+	p := make([]int64, 0, 5)
+	fmt.Println(p)
+	p = append(p, 9)
+	fmt.Println(p)
+	p = make([]int64, 5, 5)
+	fmt.Println(p)
+	p = append(p, 9)
+	fmt.Println(p)
+
+}
 func testMap() {
 	map1 := make(map[int64]string)
 
