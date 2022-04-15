@@ -2,6 +2,7 @@ package testcase
 
 import (
 	"fmt"
+	"testing"
 	"time"
 )
 
@@ -16,4 +17,8 @@ func TestClosure() {
 		}()
 	}
 	time.Sleep(1000000)
+}
+
+func TestFilterImpl_RelevanceInAdvance(t *testing.T){
+	fmt.Println("test case")
 }
