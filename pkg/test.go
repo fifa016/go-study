@@ -12,7 +12,13 @@ import (
 
 func main() {
     fmt.Println("=========start run=========")
-    testNil()
+    testMd5()
+}
+
+func testStackOverFlow(n int) {
+    fmt.Println(n)
+    n++
+    testStackOverFlow(n)
 }
 
 func testNil() {
@@ -29,7 +35,7 @@ func testMd5() {
 
     for i := 0; i < 1; i++ {
         md5 := md5.New()
-        text := "abcd"
+        text := "吹风机"
         md5.Write([]byte(text))
         str := hex.EncodeToString(md5.Sum(nil))
         str = fmt.Sprintf("set:query:%s:irrelcids", str)
