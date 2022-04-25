@@ -12,7 +12,11 @@ import (
 
 func main() {
     fmt.Println("=========start run=========")
-    testMd5()
+
+    start := 1
+    end := 2
+    middle := start + (end - start) / 2
+    fmt.Println(middle)
 }
 
 func testStackOverFlow(n int) {
