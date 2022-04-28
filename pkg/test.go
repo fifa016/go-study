@@ -13,10 +13,26 @@ import (
 func main() {
     fmt.Println("=========start run=========")
 
-    start := 1
-    end := 2
-    middle := start + (end - start) / 2
-    fmt.Println(middle)
+    testMapValueModify()
+}
+
+func testMapValueModify() {
+    node := Node{
+        1111,
+    }
+    ma := map[int]Node {
+        1: node,
+    }
+    node2 := ma[1]
+    node2.value = 2
+
+
+    node2 = ma[1]
+    fmt.Println(node2.value)
+
+}
+type Node struct {
+    value int
 }
 
 func testStackOverFlow(n int) {
