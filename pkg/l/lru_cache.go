@@ -66,11 +66,17 @@ func (this *LRUCache) Put(key int, value int) {
         this.cache[key] = node
         this.toHead(node)
         if len(this.cache) > this.capacity {
-            this.tail = this.tail.pre
-            this.tail.next = nil
+            //this.removeNode(this.tail.pre)
+            //delete(this.cache, this.tail.pre.key)
+            this.removeTail()
             delete(this.cache, this.tail.key)
         }
     }
+
+}
+func (this *LRUCache)removeTail() {
+    this.tail = this.tail.pre
+    this.tail.next = nil
 
 }
 
