@@ -1,5 +1,4 @@
-package main
-
+package l
 func twoSum(arr []int, target int) []int {
     res := []int{0, 0}
 

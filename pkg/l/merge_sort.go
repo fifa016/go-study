@@ -1,14 +1,13 @@
-package main
+package l
 
-import "fmt"
-func main() {
-    nums := []int{3, 2, 7, 1, 4, 6, 8, 5, 10, 9}
-    fmt.Println("before sort")
-    fmt.Println(nums)
-    mergeSort(nums)
-    fmt.Println("after sort")
-    fmt.Println(nums)
-}
+// func main() {
+//     nums := []int{3, 2, 7, 1, 4, 6, 8, 5, 10, 9}
+//     fmt.Println("before sort")
+//     fmt.Println(nums)
+//     mergeSort(nums)
+//     fmt.Println("after sort")
+//     fmt.Println(nums)
+// }
 
 func mergeSort(nums []int) {
     doMergeSort(nums, 0, len(nums)-1)

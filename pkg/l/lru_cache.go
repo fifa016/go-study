@@ -1,17 +1,18 @@
-package main
+package l
 
-func main() {
-    lru := Constructor(2)
-    lru.Put(1,1)
-    lru.Put(2,2)
-    lru.Get(1)
-    lru.Put(3,3)
-    lru.Get(2)
-    lru.Put(4,4)
-    lru.Get(1)
-    lru.Get(3)
-    lru.Get(4)
-}
+// func main() {
+//     lru := Constructor(2)
+//     lru.Put(1,1)
+//     lru.Put(2,2)
+//     lru.Get(1)
+//     lru.Put(3,3)
+//     lru.Get(2)
+//     lru.Put(4,4)
+//     lru.Get(1)
+//     lru.Get(3)
+//     lru.Get(4)
+// }
+
 // 搞引用一定要用 指针
 type LRUCache struct {
     cache    map[int]*Node

@@ -1,12 +1,8 @@
-package main
+package l
 
 import "sort"
 
-func main() {
-
-}
-
-func findContentChildren(g []int, s []int) int {
+func indContentChildren(g []int, s []int) int {
     sort.Ints(g)
     sort.Ints(s)
 
