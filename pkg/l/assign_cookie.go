@@ -2,7 +2,7 @@ package l
 
 import "sort"
 
-func indContentChildren(g []int, s []int) int {
+func IndContentChildren(g []int, s []int) int {
     sort.Ints(g)
     sort.Ints(s)
 
