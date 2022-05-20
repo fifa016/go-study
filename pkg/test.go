@@ -13,24 +13,55 @@ import (
 func main() {
     fmt.Println("=========start run=========")
 
-    testMapValueModify()
+    //m := map[string]string{
+    //    "b" : "b",
+    //}
+    //testMapAddKey(m)
+    //
+    //if value , ok := m["a"]; ok {
+    //    fmt.Println(value)
+    //}
+    testFloatMultiply()
+}
+
+func testFloatMultiply() {
+    var a float64 = 1.2
+    var b float64 = 1.2
+    var c *float64 = &a
+    var d *float64 = &b
+    *c = a*b
+    fmt.Println(*c)
+    fmt.Println(*d)
+
+}
+
+func testMapAddKey(m map[int]Node) {
+    m[2] = Node{
+        2222,
+    }
+    m[3] = Node{
+        3,
+    }
+    m[4] = Node{
+        4,
+    }
+    delete(m, 1)
+
 }
 
 func testMapValueModify() {
     node := Node{
         1111,
     }
-    ma := map[int]Node {
+    ma := map[int]Node{
         1: node,
     }
-    node2 := ma[1]
-    node2.value = 2
-
-
-    node2 = ma[1]
-    fmt.Println(node2.value)
+    fmt.Println(len(ma))
+    testMapAddKey(ma)
+    fmt.Println(len(ma))
 
 }
+
 type Node struct {
     value int
 }
@@ -44,7 +75,7 @@ func testStackOverFlow(n int) {
 func testNil() {
     var ptr *int
     ptr = nil
-    fmt.Println( ptr == nil)
+    fmt.Println(ptr == nil)
 }
 
 func testMd5() {
