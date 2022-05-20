@@ -10,11 +10,11 @@ import "fmt"
 //     t5 := &TreeNode{5,nil,nil}
 //     t7 := &TreeNode{7,nil,nil}
 
-//     t1.left = t2
-//     t1.right = t3
-//     t2.left = t4
-//     t2.right = t5
-//     t3.right = t7
+//     t1.Left = t2
+//     t1.Right = t3
+//     t2.Left = t4
+//     t2.Right = t5
+//     t3.Right = t7
 
 //     //preOrderTraverse(t1)
 //     postOrderTraverse(t1)
@@ -25,25 +25,25 @@ func preOrderTraverse(root *TreeNode) {
         return
     }
     fmt.Println(root.id)
-    preOrderTraverse(root.left)
-    preOrderTraverse(root.right)
+    preOrderTraverse(root.Left)
+    preOrderTraverse(root.Right)
 
 }
 func inOrderTraverse(root *TreeNode) {
     if root == nil{
         return
     }
-    inOrderTraverse(root.left)
+    inOrderTraverse(root.Left)
     fmt.Println(root.id)
-    inOrderTraverse(root.right)
+    inOrderTraverse(root.Right)
 }
 
 func postOrderTraverse(root *TreeNode) {
     if root == nil{
         return
     }
-    postOrderTraverse(root.left)
-    postOrderTraverse(root.right)
+    postOrderTraverse(root.Left)
+    postOrderTraverse(root.Right)
     fmt.Println(root.id)
 
 }
@@ -51,7 +51,7 @@ func postOrderTraverse(root *TreeNode) {
 
 type TreeNode struct {
     id int
-    left *TreeNode
-    right *TreeNode
+    Left *TreeNode
+    Right *TreeNode
 }
 
