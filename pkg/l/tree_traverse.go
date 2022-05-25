@@ -24,7 +24,7 @@ func preOrderTraverse(root *TreeNode) {
     if root == nil{
         return
     }
-    fmt.Println(root.id)
+    fmt.Println(root.Val)
     preOrderTraverse(root.Left)
     preOrderTraverse(root.Right)
 
@@ -34,7 +34,7 @@ func inOrderTraverse(root *TreeNode) {
         return
     }
     inOrderTraverse(root.Left)
-    fmt.Println(root.id)
+    fmt.Println(root.Val)
     inOrderTraverse(root.Right)
 }
 
@@ -44,14 +44,6 @@ func postOrderTraverse(root *TreeNode) {
     }
     postOrderTraverse(root.Left)
     postOrderTraverse(root.Right)
-    fmt.Println(root.id)
+    fmt.Println(root.Val)
 
 }
-
-
-type TreeNode struct {
-    id int
-    Left *TreeNode
-    Right *TreeNode
-}
-

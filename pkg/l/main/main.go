@@ -7,8 +7,22 @@ import (
 
 func main() {
     fmt.Println("============= start run ============")
-    testIsValidParenthenes()
+    testInorderTraversal()
     fmt.Println("============= end ============")
+}
+
+func testInorderTraversal() {
+	root:= &l.TreeNode{
+		Val:1,
+		Left:nil,
+		Right:&l.TreeNode{
+			Val:2,
+			Left: &l.TreeNode{
+				Val:3,
+			},
+		},
+	}
+	l.InorderTraversal(root)
 }
 
 func testBinarySearch() {
