@@ -7,7 +7,7 @@ import (
 
 func main() {
     fmt.Println("============= start run ============")
-    testBinarySearch()
+    testIsValidParenthenes()
     fmt.Println("============= end ============")
 }
 
@@ -21,4 +21,9 @@ func testQuickSort() {
     nums := []int{2,1,3,4,5}
     l.QuickSort(nums)
     fmt.Println(nums)
+}
+
+func testIsValidParenthenes() {
+	s:="{}"
+	fmt.Println(l.IsValid(s))
 }
