@@ -21,7 +21,47 @@ func main() {
 	//if value , ok := m["a"]; ok {
 	//    fmt.Println(value)
 	//}
-	testMapAppend()
+	testStringLength()
+}
+
+func testStringLength() {
+	str := " 中国abc12"
+	bytes := []byte(str)
+	r := []rune(str)
+	fmt.Println(len(str))
+	fmt.Println(len(bytes))
+	fmt.Println(len(r))
+
+	fmt.Println(str[0] == ' ')
+	fmt.Println(bytes[0] == ' ')
+	fmt.Println(r[0] == ' ')
+}
+
+func testStringReverse() {
+	str := "abcde中国"
+	runes := []rune(str)
+
+	left := 0
+	right := len(runes) - 1
+	for left < right {
+		runes[left], runes[right] = runes[right], runes[left]
+		left++
+		right--
+	}
+	fmt.Println(string(runes))
+}
+
+func testStringReverseEverySpace() {
+	str := "abc def efg 12"
+	runes := []rune(str)
+	left := 0
+	right := len(runes) - 1
+	for left < right {
+		runes[left], runes[right] = runes[right], runes[left]
+		left++
+		right--
+	}
+	fmt.Println(string(runes))
 }
 
 func testMapAppend() {
@@ -132,9 +172,6 @@ func testPanic() {
 			waitGroup.Done()
 		}()
 		panic(1)
-		fmt.Println("after panic")
-
-		fmt.Println("after recover")
 	}()
 	waitGroup.Wait()
 	fmt.Println("ready to close")
