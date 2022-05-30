@@ -3,8 +3,10 @@ package main
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"go-study/pkg/util"
+	"reflect"
 	"strconv"
 	"sync"
 	"time"
@@ -13,15 +15,19 @@ import (
 func main() {
 	fmt.Println("=========start run=========")
 
-	//m := map[string]string{
-	//    "b" : "b",
-	//}
-	//testMapAddKey(m)
-	//
-	//if value , ok := m["a"]; ok {
-	//    fmt.Println(value)
-	//}
-	testStringLength()
+	testJsonMarshal()
+}
+
+
+func testJsonMarshal() {
+	var d map[string]interface{}
+    err := json.Unmarshal([]byte(`{"api": 12}`), &d)
+	fmt.Println(err)
+	if err == nil {
+		fmt.Println(111)
+		fmt.Println(reflect.TypeOf(d["api"]))	
+
+	}
 }
 
 func testStringLength() {

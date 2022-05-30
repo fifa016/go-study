@@ -13,7 +13,7 @@ package l
  * @param {int} n
  * @return {*}
  */
-func merge2(nums1 []int, m int, nums2 []int, n int) {
+func merge3(nums1 []int, m int, nums2 []int, n int) {
 
 	n1 := m - 1
 	n2 := n - 1
