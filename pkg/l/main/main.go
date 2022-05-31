@@ -18,9 +18,9 @@ func main() {
 }
 
 func testSort() {
-	nums := []int{8, 4, 5, 7, 1, 3, 6, 2}
+	nums := []int{8, 4, 5, 7, 1, 3, 6}
 	// nums := []int{9, 3, 4, 8, 1, 2, 5, 7}
-	l.MergeSort(nums)
+	l.CountSort(nums)
 	fmt.Println(nums)
 }
 

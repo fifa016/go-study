@@ -6,6 +6,151 @@
 
 package l
 
+
+func CountSort(nums []int){
+	max := 0
+	for _, num := range nums {
+		if num > max {
+			max = num
+		}
+	}
+
+	tmpArr := make([]int , max + 1)
+
+	for i := 0; i < len(nums); i++ {
+		tmpArr[nums[i]] ++
+	}
+	index := 0
+
+	for i := 0; i < len(tmpArr); i++ {
+		for tmpArr[i] > 0 {
+			nums[index] = i
+			tmpArr[i] --
+			index ++
+		}
+	}
+}
+
+func HeapSort(nums []int) {
+
+	//build heap
+	for i := len(nums) - 1; i >= 0; i-- {
+		if 2*i+1 >= len(nums) && 2*i+2 >= len(nums) {
+			continue
+		}
+
+		adjust(nums, i, len(nums)-1)
+	}
+
+	// swap and adjust
+	for i := len(nums) - 1; i >= 0; i-- {
+		nums[0], nums[i] = nums[i], nums[0]
+		adjust(nums, 0, i-1)
+	}
+
+}
+
+func adjust(nums []int, target, last int) {
+
+	if target >= last {
+		return
+	}
+
+	minIndex := target
+
+	if 2*target+1 <= last && nums[2*target+1] < nums[minIndex] {
+		minIndex = 2*target + 1
+	}
+	if 2*target+2 <= last && nums[2*target+2] < nums[minIndex] {
+		minIndex = 2*target + 2
+	}
+
+	if target != minIndex {
+		nums[target], nums[minIndex] = nums[minIndex], nums[target]
+		adjust(nums, minIndex, last)
+	}
+
+}
+
+func MergeSortNoInPlace(nums []int) {
+	doMergeSortNoInPlace(nums, 0, len(nums)-1)
+}
+func doMergeSortNoInPlace(nums []int, left, right int) {
+	if left >= right {
+		return
+	}
+	mid := left + (right-left)/2
+	doMergeSortNoInPlace(nums, left, mid)
+	doMergeSortNoInPlace(nums, mid+1, right)
+
+	mergeNoInPlace(nums, left, mid, right)
+}
+func mergeNoInPlace(nums []int, left, mid, right int) {
+	tmpNums := make([]int, len(nums))
+	tmpIndex := 0
+	l := left
+	r := mid + 1
+
+	for l <= mid && r <= right {
+		if nums[l] < nums[r] {
+			tmpNums[tmpIndex] = nums[l]
+			l++
+		} else {
+			tmpNums[tmpIndex] = nums[r]
+			r++
+		}
+		tmpIndex++
+	}
+	for l <= mid {
+		tmpNums[tmpIndex] = nums[l]
+		l++
+		tmpIndex++
+	}
+	for r <= right {
+		tmpNums[tmpIndex] = nums[r]
+		r++
+		tmpIndex++
+	}
+	tmpIndex = 0
+	length := right - left + 1
+	for tmpIndex < length {
+		nums[left] = tmpNums[tmpIndex]
+		tmpIndex++
+		left++
+	}
+}
+
+func QuickSort(nums []int) {
+	doQuickSort(nums, 0, len(nums)-1)
+}
+
+func doQuickSort(nums []int, left, right int) {
+	if left >= right {
+		return
+	}
+
+	flag := left
+	l := left
+	r := right
+
+	for l < r {
+		for l < r && nums[r] > nums[flag] {
+			r--
+		}
+		for l < r && nums[l] < nums[flag] {
+			l++
+		}
+
+		if l < r {
+			nums[l], nums[r] = nums[r], nums[l]
+		}
+		nums[l] = nums[flag]
+	}
+	doQuickSort(nums, left, l)
+	doQuickSort(nums, l+1, right)
+
+}
+
 func MergeSort(nums []int) {
 	doMergeSort(nums, 0, len(nums)-1)
 }
@@ -40,8 +185,8 @@ func mergeInPlace(nums []int, left, leftEnd, right int) {
 func swap2(nums []int, left, right int) {
 	for left < right {
 		nums[left], nums[right] = nums[right], nums[left]
-		left ++
-		right --
+		left++
+		right--
 	}
 }
 
