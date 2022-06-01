@@ -13,8 +13,15 @@ import (
 func main() {
 	fmt.Println("============= start run ============")
 
-	testSort()
+	testFindKth()
+
 	fmt.Println("============= end ============")
+}
+func testFindKth() {
+	nums := []int{3, 2, 1, 5, 6, 4}
+	res := l.FindKthLargest(nums, 2)
+	fmt.Println(res)
+
 }
 
 func testSort() {
