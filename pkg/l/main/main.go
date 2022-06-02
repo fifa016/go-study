@@ -13,10 +13,19 @@ import (
 func main() {
 	fmt.Println("============= start run ============")
 
-	testFindKth()
+	testPostorderTraversal()
 
 	fmt.Println("============= end ============")
 }
+
+
+func testStrToInt() {
+	input := "42"
+	res := l.StrToInt(input)
+	fmt.Println(res)
+
+}
+
 func testFindKth() {
 	nums := []int{3, 2, 1, 5, 6, 4}
 	res := l.FindKthLargest(nums, 2)
@@ -59,6 +68,19 @@ func testInorderTraversal() {
 		},
 	}
 	l.InorderTraversal(root)
+}
+func testPostorderTraversal() {
+	root := &l.TreeNode{
+		Val:  1,
+		Left: nil,
+		Right: &l.TreeNode{
+			Val: 2,
+			Left: &l.TreeNode{
+				Val: 3,
+			},
+		},
+	}
+	l.PostorderTraversal(root)
 }
 
 func testBinarySearch() {
