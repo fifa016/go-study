@@ -105,8 +105,11 @@ func inorderTraversalNorecur(root *TreeNode) []int {
 	return res
 }
 
-func LevelTra(root *TreeNode, level int) []int {
-	res := []int{}
+func LevelTra(root *TreeNode) [][]int {
+	if root == nil {
+        return nil
+    }
+    res := [][]int{}
 	cache := []*TreeNode{}
 	left := 0
 	cache = append(cache, root)
@@ -114,13 +117,10 @@ func LevelTra(root *TreeNode, level int) []int {
 	levelNum := 0
 	for left < right {
 		levelNum++
-		if levelNum > level {
-			return res
-		}
+		 
+		level := []int{}
 		for left < right {
-			if levelNum == level {
-				res = append(res, (*cache[left]).Val)
-			}
+			level = append(level, (*cache[left]).Val)
 			if cache[left].Left != nil {
 				cache = append(cache, (*cache[left]).Left)
 			}
@@ -131,6 +131,7 @@ func LevelTra(root *TreeNode, level int) []int {
 			left++
 		}
 		right = len(cache)
+		res = append(res, level)
 	}
 	return res
 }

@@ -13,11 +13,65 @@ import (
 func main() {
 	fmt.Println("============= start run ============")
 
-	testPostorderTraversal()
+	// testPermute()
+	sli1 := make([]int, 3)
+	sli2 := []int{1,2,3}
 
+	copy(sli1, sli2)
+	fmt.Println(sli1[2])
 	fmt.Println("============= end ============")
 }
 
+func testPermute() {
+	arr := []int{1, 2, 3,4}
+	res := l.Permute(arr)
+	fmt.Println(res)
+}
+
+func testKthSmallest() {
+	root := &l.TreeNode{
+		Val: 3,
+		Left: &l.TreeNode{
+			Val:   1,
+			Right: &l.TreeNode{Val: 2},
+		},
+		Right: &l.TreeNode{
+			Val: 4,
+		},
+	}
+
+	l.KthSmallest(root, 1)
+
+}
+
+func testReverseLinkedList() {
+	head := &l.ListNode{
+		Val: 3,
+		Next: &l.ListNode{
+			Val: 5,
+		},
+	}
+	l.ReverseBetween(head, 1, 2)
+}
+
+func testLinkedListSort() {
+	head := &l.ListNode{
+		Val: 3,
+		Next: &l.ListNode{
+			Val: 2,
+			Next: &l.ListNode{
+				Val: 4,
+			},
+		},
+	}
+
+	res := l.LinkedListBubbleSort(head)
+
+	for res != nil {
+		fmt.Println(res.Val)
+		res = res.Next
+	}
+}
 
 func testStrToInt() {
 	input := "42"
