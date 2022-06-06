@@ -5,6 +5,54 @@
  */
 package l
 
+func reverseKGroupTest20220606(head *ListNode, k int) *ListNode {
+
+	beforeHead := &ListNode{Next: head}
+
+	pre := beforeHead
+	start := pre.Next
+	end := start
+
+	for end != nil {
+
+		for i := 0; i < k && end != nil; i++ {
+			end = end.Next
+		}
+
+		next := end.Next
+
+		end.Next = nil
+
+		pre.Next = reverseTest20220606(start)
+		start.Next = next
+
+		pre = start
+		start = next
+		end = start
+
+	}
+
+	return beforeHead.Next
+
+}
+
+func reverseTest20220606(start *ListNode) *ListNode {
+	if start == nil || start.Next == nil {
+		return start
+	}
+
+	var pre *ListNode
+	cur := start
+	for cur != nil {
+		next := cur.Next
+
+		cur.Next = pre
+		pre = cur
+		cur = next
+	}
+	return pre
+}
+
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	if head == nil {
 		return head
@@ -14,7 +62,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 
 	pre := beforeHead
 	end := pre
-	
+
 	for end != nil {
 		for i := 0; i < k && end != nil; i++ {
 			end = end.Next

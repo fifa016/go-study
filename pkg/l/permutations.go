@@ -75,7 +75,6 @@ func PermuteNoRepeat(nums []int) [][]int {
 
 func Subsets(nums []int) [][]int {
 	res := [][]int{}
-	flag := make([]int, len(nums))
 	list := []int{}
 
 	var dfs func(start int)
@@ -85,14 +84,8 @@ func Subsets(nums []int) [][]int {
 		res = append(res, tmp)
 
 		for i := start; i < len(nums); i++ {
-			if flag[i] == 1 {
-				continue
-			}
-			flag[i] = 1
 			list = append(list, nums[i])
 			dfs(i + 1)
-
-			flag[i] = 0
 			list = list[:len(list)-1]
 		}
 	}

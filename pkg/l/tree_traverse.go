@@ -68,6 +68,58 @@ func PostorderTraversal(root *TreeNode) []int {
 	return res
 }
 
+func PreorderTraTest20220606(root *TreeNode) []int {
+	res := []int{}
+    stack := []*TreeNode{}
+
+    stack = append(stack, root)
+
+    for len(stack)!= 0 {
+        node := stack[len(stack) - 1]
+        stack = stack[0 : len(stack) - 1]
+
+        res = append(res, node.Val)
+        
+        if node.Right != nil { 
+            stack = append(stack, node.Right)
+        }
+        if node.Left != nil {
+            stack = append(stack, node.Left)
+        }
+    }
+
+    return res
+}
+
+func inorderTraversalTest20220606(root *TreeNode) []int {
+    res := []int{}
+    if root == nil {
+        return res
+    }
+
+    stack :=[]*TreeNode{}
+
+    cur := root
+     
+    for cur!= nil || len(stack) != 0 {
+        for cur != nil {
+            stack = append(stack, cur)
+            cur = cur.Left
+        }
+
+        cur = stack[len(stack) - 1] 
+        stack = stack[: len(stack) - 1]
+
+        res = append(res, cur.Val)
+        cur = cur.Right
+       
+    }
+
+
+    return res
+     
+}
+
 func preorderTraversalNorecur(root *TreeNode) []int {
 	res := []int{}
 	stack := NewStack()

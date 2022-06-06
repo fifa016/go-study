@@ -12,13 +12,8 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-
-	// testPermute()
-	sli1 := make([]int, 3)
-	sli2 := []int{1,2,3}
-
-	copy(sli1, sli2)
-	fmt.Println(sli1[2])
+	testPreorderTraversal()
+	 
 	fmt.Println("============= end ============")
 }
 
@@ -74,7 +69,7 @@ func testLinkedListSort() {
 }
 
 func testStrToInt() {
-	input := "42"
+	input := "+-2"
 	res := l.StrToInt(input)
 	fmt.Println(res)
 
@@ -90,7 +85,7 @@ func testFindKth() {
 func testSort() {
 	nums := []int{8, 4, 5, 7, 1, 3, 6}
 	// nums := []int{9, 3, 4, 8, 1, 2, 5, 7}
-	l.CountSort(nums)
+	l.MergeSortTest20220605(nums)
 	fmt.Println(nums)
 }
 
@@ -108,6 +103,20 @@ func testPathSum() {
 	res := l.HasPathSum(root, 4)
 	fmt.Println(res)
 
+}
+
+func testPreorderTraversal() {
+	root := &l.TreeNode{
+		Val:  1,
+		Left: nil,
+		Right: &l.TreeNode{
+			Val: 2,
+			Left: &l.TreeNode{
+				Val: 3,
+			},
+		},
+	}
+	l.PreorderTraTest20220606(root)
 }
 
 func testInorderTraversal() {

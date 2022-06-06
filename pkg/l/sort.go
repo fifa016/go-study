@@ -7,6 +7,59 @@
 package l
 
 
+
+func MergeSortTest20220605(nums []int) []int {
+    mergesort20220605(nums, 0, len(nums) - 1)
+    return nums
+}
+
+func mergesort20220605(nums []int, start, end int) {
+    if start >= end {
+        return
+    }
+    mid := start + (end - start) / 2
+    mergesort20220605(nums, start, mid)
+    mergesort20220605(nums, mid + 1, end)
+    doMergeNoExtraSpace20220605(nums, start, mid, end)
+}
+
+func doMergeNoExtraSpace20220605(nums []int, start, mid, end int) {
+    i := start
+    j := mid + 1 
+
+    for i < j && j <= end {
+        for i < j && nums[i] <= nums[j] {
+            i ++
+        }
+        index := j 
+        for i < j && j <= end && nums[j] <= nums[i] {
+            j ++
+        }
+
+        swap20220605(nums, i , index -1)
+        swap20220605(nums, index , j -1)
+        swap20220605(nums, i , j - 1)//注意不能到j，只能到j - 1
+        i = j- index + i
+    }
+  
+}
+func swap20220605(nums []int , start , end int) {
+    if start >= end {
+        return 
+    }
+    for start < end {
+        nums[start],nums[end] = nums[end], nums[start]
+		start ++
+        end --
+    }
+}
+
+
+
+
+
+
+
 func CountSort(nums []int){
 	max := 0
 	for _, num := range nums {

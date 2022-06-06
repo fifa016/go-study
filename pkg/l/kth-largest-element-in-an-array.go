@@ -53,7 +53,7 @@ func minHeap(nums []int, k int) int {
 	for i := k; i < len(nums); i++ {
 		if nums[i] > nums[0] {
 			nums[i], nums[0] = nums[0], nums[i]
-			adjust(nums, 0, k-1)
+			adjust2(nums, 0, k-1)
 		}
 	}
 
