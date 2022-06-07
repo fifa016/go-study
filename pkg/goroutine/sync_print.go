@@ -20,19 +20,22 @@ func TestPrint() {
 	go printNum(0)
 	go printNum(1)
 	go printNum(2)
-	go printNum(3)
 
 	wg.Wait()
 }
 
 func printNum(num int) {
 
-	lock.Lock()
-	if state == num {
-		fmt.Println(num)
-		state++
-	}
+	for i := 0; i < 2; {
 
-	defer lock.Unlock()
-	defer wg.Done()
+		lock.Lock()
+		if state %3 == num {
+			fmt.Println(num)
+			state++
+			i++
+		}
+
+		lock.Unlock()
+	}
+	wg.Done()
 }

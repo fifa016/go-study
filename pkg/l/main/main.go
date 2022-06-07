@@ -12,7 +12,10 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-	testPreorderTraversal()
+	// testPreorderTraversal()
+	list := [3][2]int{}
+
+	fmt.Println(list)
 	 
 	fmt.Println("============= end ============")
 }
