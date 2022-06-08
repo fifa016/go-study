@@ -28,7 +28,7 @@ func maxProfit(prices []int) int {
 
 func maxProfitTest20220608(prices []int) int {
 	max := 0
-	min := prices[i]
+	min := prices[0]
 	for i := 1; i < len(prices); i++ {
 		if prices[i] < min {
 			min = prices[i]
@@ -38,7 +38,6 @@ func maxProfitTest20220608(prices []int) int {
 			max = prices[i] - min
 		}
 	}
-
 
 	return  max
 

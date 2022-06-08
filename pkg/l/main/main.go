@@ -12,16 +12,23 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-	// testPreorderTraversal()
-	list := [3][2]int{}
-
-	fmt.Println(list)
-	 
+	testLongestPalindromicSubstring()
 	fmt.Println("============= end ============")
 }
 
+func testLongestPalindromicSubstring() {
+	s := "aaaaa"
+	res := l.LongestPalindrome(s)
+	fmt.Println(res)
+}
+
+func testMaxSum() {
+	list := []int{1, -5, 7, -4, 6, -9, 3, 6, -7}
+	fmt.Println(l.MaxSumOfTwoSubArray(list))
+}
+
 func testPermute() {
-	arr := []int{1, 2, 3,4}
+	arr := []int{1, 2, 3, 4}
 	res := l.Permute(arr)
 	fmt.Println(res)
 }
