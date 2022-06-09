@@ -12,8 +12,32 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-	testLongestPalindromicSubstring()
+	testValidParenWithPriority()
 	fmt.Println("============= end ============")
+}
+
+func testValidParenWithPriority() {
+
+	arr := []string{
+
+		"{}{}<><>()()[][]",
+		"{{}}{{}}<<>><<>>(())(())[[]][[]]",
+		"{{}}{{}}<<>><<>>(())(())[[]][[]]",
+		"{<>}{[]}<<<>><<>>>((<>))(())[[(<>)]][[]]",
+		"><}{{[]}<<<>><<>>>((<>))(())[[(<>)]][[]]",
+	}
+
+	for _, s := range arr {
+		fmt.Println(l.IsValidWithPriority(s))
+
+	}
+}
+
+func testLongestCommonSubstring() {
+	s1 := "abcd"
+	s2 := "cbca"
+	res := l.LongestCommonSubstring(s1, s2)
+	fmt.Println(res)
 }
 
 func testLongestPalindromicSubstring() {
