@@ -13,24 +13,43 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-	testTopKFrequent()
+	testSpiralMatrix()
 	fmt.Println("============= end ============")
 }
 
+func testSpiralMatrix() {
+	matrix := [][]int{
+		{1, 2, 3}, {4, 5, 6}, {7, 8, 9},
+	}
+	fmt.Println(l.SpiralOrder(matrix))
+}
+
+func testThreeSum() {
+	nums := []int{-1, 0, 1, 2, -1, -4}
+
+	l.ThreeSum(nums)
+}
+
+func testSumRootOfLeafNumbers() {
+	root := &l.TreeNode{Val: 1, Left: &l.TreeNode{Val: 2}, Right: &l.TreeNode{Val: 3}}
+
+	l.SumNumbers(root)
+}
+
 func testSliceSort() {
-	nums := []int{1,2}
+	nums := []int{1, 2}
 	m := map[int]int{
 		1: 10,
 		2: 20,
 	}
-	 sort.Slice(nums, func(i, j int) bool {
+	sort.Slice(nums, func(i, j int) bool {
 		return m[i] < m[j]
 	})
 	fmt.Println(nums)
 }
 
 func testTopKFrequent() {
-	nums := []int{4,1,-1,2,-1,2,3}
+	nums := []int{4, 1, -1, 2, -1, 2, 3}
 	k := 2
 	fmt.Println(l.TopKFrequent(nums, k))
 }

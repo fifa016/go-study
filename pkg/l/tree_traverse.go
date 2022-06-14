@@ -38,6 +38,38 @@ func (this *Stack) top() *TreeNode {
 	return this.data[len(this.data)-1]
 }
 
+func SumNumbers(root *TreeNode) int {
+	res := 0
+	if root == nil {
+		return res
+	}
+	nums := []int{}
+	var dfs func(*TreeNode, int)
+	dfs = func(root *TreeNode, sum int) {
+		if root == nil {
+			return
+		}
+
+		val := sum*10 + root.Val
+        
+		if root.Left == nil && root.Right == nil {
+			nums = append(nums, val)
+            return 
+		}
+
+		dfs(root.Left, val)
+		dfs(root.Right, val)
+	}
+
+	dfs(root, 0)
+
+	for _, val := range nums {
+		res += val
+	}
+
+	return res
+}
+
 func PostorderTraversal(root *TreeNode) []int {
 
 	res := []int{}
@@ -70,54 +102,53 @@ func PostorderTraversal(root *TreeNode) []int {
 
 func PreorderTraTest20220606(root *TreeNode) []int {
 	res := []int{}
-    stack := []*TreeNode{}
+	stack := []*TreeNode{}
 
-    stack = append(stack, root)
+	stack = append(stack, root)
 
-    for len(stack)!= 0 {
-        node := stack[len(stack) - 1]
-        stack = stack[0 : len(stack) - 1]
+	for len(stack) != 0 {
+		node := stack[len(stack)-1]
+		stack = stack[0 : len(stack)-1]
 
-        res = append(res, node.Val)
-        
-        if node.Right != nil { 
-            stack = append(stack, node.Right)
-        }
-        if node.Left != nil {
-            stack = append(stack, node.Left)
-        }
-    }
+		res = append(res, node.Val)
 
-    return res
+		if node.Right != nil {
+			stack = append(stack, node.Right)
+		}
+		if node.Left != nil {
+			stack = append(stack, node.Left)
+		}
+	}
+
+	return res
 }
 
 func inorderTraversalTest20220606(root *TreeNode) []int {
-    res := []int{}
-    if root == nil {
-        return res
-    }
+	res := []int{}
+	if root == nil {
+		return res
+	}
 
-    stack :=[]*TreeNode{}
+	stack := []*TreeNode{}
 
-    cur := root
-     
-    for cur!= nil || len(stack) != 0 {
-        for cur != nil {
-            stack = append(stack, cur)
-            cur = cur.Left
-        }
+	cur := root
 
-        cur = stack[len(stack) - 1] 
-        stack = stack[: len(stack) - 1]
+	for cur != nil || len(stack) != 0 {
+		for cur != nil {
+			stack = append(stack, cur)
+			cur = cur.Left
+		}
 
-        res = append(res, cur.Val)
-        cur = cur.Right
-       
-    }
+		cur = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
 
+		res = append(res, cur.Val)
+		cur = cur.Right
 
-    return res
-     
+	}
+
+	return res
+
 }
 
 func preorderTraversalNorecur(root *TreeNode) []int {
@@ -159,9 +190,9 @@ func inorderTraversalNorecur(root *TreeNode) []int {
 
 func LevelTra(root *TreeNode) [][]int {
 	if root == nil {
-        return nil
-    }
-    res := [][]int{}
+		return nil
+	}
+	res := [][]int{}
 	cache := []*TreeNode{}
 	left := 0
 	cache = append(cache, root)
@@ -169,7 +200,7 @@ func LevelTra(root *TreeNode) [][]int {
 	levelNum := 0
 	for left < right {
 		levelNum++
-		 
+
 		level := []int{}
 		for left < right {
 			level = append(level, (*cache[left]).Val)
