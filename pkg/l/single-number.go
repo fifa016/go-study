@@ -18,6 +18,7 @@ func singleNumber(nums []int) int {
 }
 
 //一个元素出现1次，其他出现3次
+//
 func singleNumberII(nums []int) int {
 	res := int32(0)
 	for i := 0; i < 32; i++ {

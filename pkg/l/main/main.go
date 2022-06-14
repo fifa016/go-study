@@ -8,12 +8,31 @@ package main
 import (
 	"fmt"
 	"go-study/pkg/l"
+	"sort"
 )
 
 func main() {
 	fmt.Println("============= start run ============")
-	testValidParenWithPriority()
+	testTopKFrequent()
 	fmt.Println("============= end ============")
+}
+
+func testSliceSort() {
+	nums := []int{1,2}
+	m := map[int]int{
+		1: 10,
+		2: 20,
+	}
+	 sort.Slice(nums, func(i, j int) bool {
+		return m[i] < m[j]
+	})
+	fmt.Println(nums)
+}
+
+func testTopKFrequent() {
+	nums := []int{4,1,-1,2,-1,2,3}
+	k := 2
+	fmt.Println(l.TopKFrequent(nums, k))
 }
 
 func testValidParenWithPriority() {
