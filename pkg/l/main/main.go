@@ -13,10 +13,24 @@ import (
 
 func main() {
 	fmt.Println("============= start run ============")
-	testSpiralMatrix()
+	testZigzagLevelOrder()
 	fmt.Println("============= end ============")
 }
 
+func testZigzagLevelOrder() {
+	root := &l.TreeNode{
+		Val: 3,
+		Left: &l.TreeNode{
+			Val: 9,
+		},
+		Right: &l.TreeNode{
+			Val:   20,
+			Left:  &l.TreeNode{Val: 15},
+			Right: &l.TreeNode{Val: 7},
+		},
+	}
+	l.ZigzagLevelOrder(root)
+}
 func testSpiralMatrix() {
 	matrix := [][]int{
 		{1, 2, 3}, {4, 5, 6}, {7, 8, 9},
